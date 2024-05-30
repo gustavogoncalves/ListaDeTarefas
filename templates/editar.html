@@ -1,0 +1,46 @@
+{% extends "template.html" %}
+{% block conteudo %}
+
+<div class="container">
+
+    <h1>EDITANDO TAREFA</h1>
+    <form action="/atualizar" method="post">
+        <input type="hidden" name="id" value="{{ tarefa.id }}">
+        <div class="mb-1">
+            <label class="form-label">Título:</label>
+            <input type="text" class="form-control" name="titulo" value="{{ tarefa.titulo }}">
+        </div>
+        <div class="mb-1">
+            <label class="form-label">DATA DE REALIZAÇÃO:</label>
+            <input type="date" class="form-control" name="data-realizacao" value="{{ tarefa.data_realizacao }}">
+        </div>
+          <div class="mb-1">
+            <label class="form-label">DESCRIÇÃO</label>
+            <textarea class="form-control" rows="2" name="descricao" value="{{ tarefa.descricao }}"></textarea> 
+          </div>
+          <button class="btn btn-success" type="submit">SALVAR</button>
+    </form>
+    <BR><BR>
+    <h4>Tarefa Selecionada:</h4>
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">TITULO</th>
+            <th scope="col">DATA DE REALIZAÇÃO</th>
+            <th scope="col">DESCRIÇÃO</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{ tarefa.titulo }}</td>
+            <td>{{ tarefa.data_realizacao }}</td>
+            <td>{{ tarefa.descricao }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends "template.html" %}
+{% block conteudo %}
+
+<div class="container">
+
+    <h1>GERENCIADOR DE TAREFAS</h1>
+    <form action="/criar" method="post">
+        <div class="mb-1">
+            <label class="form-label">Título:</label>
+            <input type="text" class="form-control" name="titulo">
+        </div>
+        <div class="mb-1">
+            <label class="form-label">DATA DE REALIZAÇÃO:</label>
+            <input type="date" class="form-control" name="data-realizacao">
+        </div>
+          <div class="mb-1">
+            <label class="form-label">DESCRIÇÃO</label>
+            <textarea class="form-control" rows="2" name="descricao"></textarea> 
+          </div>
+          <button class="btn btn-dark" type="submit">CRIAR</button>
+    </form>
+    <BR><BR>
+    <h4>Lista de Tarefas:</h4>
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">TITULO</th>
+            <th scope="col">DATA DE REALIZAÇÃO</th>
+            <th scope="col">DESCRIÇÃO</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+          {% for tarefa in lista_tarefas %}
+            <td>{{ tarefa.titulo }}</td>
+            <td>{{ tarefa.data_realizacao }}</td>
+            <td>{{ tarefa.descricao }}</td>
+            <td>
+              <a class="btn btn-secondary" href="/editar/{{tarefa.id}}">Editar</a>
+              <a class="btn btn-danger" href="/deletar/{{tarefa.id}}">Deletar</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+</div>
+
+
+{% endblock %}
